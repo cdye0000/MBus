@@ -12,6 +12,11 @@
        android:onClick="main"
        android:layout_width="match_parent"
        android:layout_height="wrap_content" />
+    <Button
+        android:text="sec"
+        android:onClick="sec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <fragment
         android:id="@+id/f1"
         class="com.cdye.mbus.Fragment1"

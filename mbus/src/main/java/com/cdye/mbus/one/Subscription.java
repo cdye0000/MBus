@@ -1,4 +1,4 @@
-package com.cdye.mbus;
+package com.cdye.mbus.one;
 
 /**
  *  n.订阅

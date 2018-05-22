@@ -1,4 +1,4 @@
-package com.cdye.mbus;
+package com.cdye.mbus.one;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -67,8 +67,8 @@ public class MBus {
             if (subscriptions == null) {
                 subscriptions = new ArrayList<>();
             }
-            Subscription newSubScription = new Subscription(subscriber, subscriberMethod);
-            subscriptions.add(newSubScription);
+            Subscription newSubscription = new Subscription(subscriber, subscriberMethod);
+            subscriptions.add(newSubscription);
             SUBSCRIBES.put(tag, subscriptions);
         }
         REGISTERS.put(subscriberClass, tags);
