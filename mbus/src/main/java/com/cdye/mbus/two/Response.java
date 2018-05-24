@@ -14,6 +14,14 @@ public class Response implements Parcelable {
         data = in.readString();
     }
 
+    public Response(String data) {
+        this.data = data;
+    }
+
+    public String getData() {
+        return data;
+    }
+
     public static final Creator<Response> CREATOR = new Creator<Response>() {
         @Override
         public Response createFromParcel(Parcel in) {

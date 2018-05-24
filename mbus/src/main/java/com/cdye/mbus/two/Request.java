@@ -20,6 +20,10 @@ public class Request implements Parcelable {
         return data;
     }
 
+    public int getType() {
+        return type;
+    }
+
     public static final Creator<Request> CREATOR = new Creator<Request>() {
         @Override
         public Request createFromParcel(Parcel in) {

@@ -2,12 +2,10 @@
 package com.cdye.mbus.two;
 
 // Declare any non-default types here with import statements
+import com.cdye.mbus.two.Response;
+import com.cdye.mbus.two.Request;
 
 interface EventBusService {
-    /**
-     * Demonstrates some basic types that you can use as parameters
-     * and return values in AIDL.
-     */
-    void basicTypes(int anInt, long aLong, boolean aBoolean, float aFloat,
-            double aDouble, String aString);
+    Response send(in Request request);
+
 }

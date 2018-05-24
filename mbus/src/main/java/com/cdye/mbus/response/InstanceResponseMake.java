@@ -5,6 +5,7 @@ import com.cdye.mbus.bean.RequestParameter;
 import com.cdye.mbus.core.TypeCenter;
 import com.cdye.mbus.utils.TypeUtils;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
@@ -12,9 +13,20 @@ import java.lang.reflect.Method;
  */
 
 public class InstanceResponseMake extends ResponseMake {
+    private Method method;
     @Override
-    protected void invokeMethod() {
+    protected Object invokeMethod() {
+        Object object=null;
+        try {
+            object=method.invoke(null,paramters);
+            objectCenter.put(object.getClass().getName(),object);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
 
+        return object;
     }
 
     @Override
@@ -28,7 +40,8 @@ public class InstanceResponseMake extends ResponseMake {
             }
         }
         String methodName=requestBody.getMethodName();
-        Method method= TypeUtils.getMethodForGettingInstance(resultClass,methodName,parameterTypes);
+         method= TypeUtils.getMethodForGettingInstance(resultClass,methodName,parameterTypes);
+
 
 
     }
