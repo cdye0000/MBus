@@ -16,6 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SecActivity" android:launchMode="singleTask"/>
+        <activity android:name=".HermesActivity" />
+        <activity android:name=".HermesActivity2" />
     </application>
 
 </manifest>

@@ -1,5 +1,9 @@
 package com.cdye.mbus.core;
 
+import android.text.TextUtils;
+
+import com.cdye.mbus.response.ResponseBody;
+import com.cdye.mbus.two.Response;
 import com.google.gson.Gson;
 
 import java.lang.reflect.InvocationHandler;
@@ -21,6 +25,17 @@ public class HermesInvocationHandler implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        Response response= Hermes.getInstance().sendRequest(service,clazz,method,args,Hermes.TYPE_NEW);
+        if (!TextUtils.isEmpty(response.getData())){
+            ResponseBody responseBody=GSON.fromJson(response.getData(),ResponseBody.class);
+            if (responseBody.getData()!=null){
+                Object data = responseBody.getData();
+                String dataStr=GSON.toJson(data);
+                Class<?> returnType = method.getReturnType();
+                Object o=GSON.fromJson(dataStr,returnType);
+                return o;
+            }
+        }
         return null;
     }
 }

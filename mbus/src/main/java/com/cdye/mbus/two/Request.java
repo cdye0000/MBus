@@ -16,6 +16,11 @@ public class Request implements Parcelable {
         type = in.readInt();
     }
 
+    public Request(String data, int type) {
+        this.data = data;
+        this.type = type;
+    }
+
     public String getData() {
         return data;
     }
